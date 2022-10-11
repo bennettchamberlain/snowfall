@@ -9,7 +9,6 @@ const double rainStrikeSize = 20, rainDropSize = 20, velocity = 50;
 const rainDrop = RainDrop(width: rainDropSize);
 const rainStrike = RainStrike(width: rainStrikeSize);
 
-
 class Rainfall extends StatefulWidget {
   const Rainfall({Key? key}) : super(key: key);
 
@@ -47,7 +46,7 @@ class _RainfallState extends State<Rainfall>
       rainDrops = rainDrops.map<Raindrop>((element) {
         try {
           BarrierLayer barrierLayer = barriers.firstWhere((barrierElement) =>
-          element.position.dx >= barrierElement.from &&
+              element.position.dx >= barrierElement.from &&
               element.position.dx <= barrierElement.to);
           final double finalBarrierGroundPosition =
               barrierLayer.yPosition - rainDropSize;
@@ -71,7 +70,7 @@ class _RainfallState extends State<Rainfall>
       setState(() {});
     });
 
-    WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       screenSize = MediaQuery.of(context).size;
       timer = Timer.periodic(const Duration(milliseconds: 50), (timer) {
         for (int number = 0; number < _random.nextInt(2000); number++) {
@@ -151,7 +150,7 @@ class _RainfallState extends State<Rainfall>
             decoration: BoxDecoration(
                 image: DecorationImage(
                     image:
-                    Image.asset("assets/images/walle_background.jpg").image,
+                        Image.asset("assets/images/walle_background.jpg").image,
                     fit: BoxFit.cover)),
             child: Stack(
               children: [
@@ -169,13 +168,13 @@ class _RainfallState extends State<Rainfall>
                             decoration: BoxDecoration(
                                 color: Colors.white38,
                                 border:
-                                Border.all(color: Colors.white, width: 4.0),
+                                    Border.all(color: Colors.white, width: 4.0),
                                 borderRadius: BorderRadius.circular(20.0)),
                             width: containerSize.width,
                             height: containerSize.height,
                             child: Padding(
                               padding:
-                              const EdgeInsets.symmetric(horizontal: 50.0),
+                                  const EdgeInsets.symmetric(horizontal: 50.0),
                               child: Center(
                                 child: Image.asset(
                                     "assets/images/flutter_logo.png"),
@@ -194,16 +193,16 @@ class _RainfallState extends State<Rainfall>
                             decoration: BoxDecoration(
                                 color: Colors.white38,
                                 border:
-                                Border.all(color: Colors.white, width: 4.0),
+                                    Border.all(color: Colors.white, width: 4.0),
                                 borderRadius: BorderRadius.circular(20.0)),
                             width: containerTwoSize.width,
                             height: containerTwoSize.height,
                             child: Padding(
                               padding:
-                              const EdgeInsets.symmetric(horizontal: 50.0),
+                                  const EdgeInsets.symmetric(horizontal: 50.0),
                               child: Center(
                                 child:
-                                Image.asset("assets/images/dart_logo.png"),
+                                    Image.asset("assets/images/dart_logo.png"),
                               ),
                             ),
                           ),
@@ -212,15 +211,15 @@ class _RainfallState extends State<Rainfall>
                 ),
                 ...rainDrops
                     .map((flake) => Positioned(
-                    left: flake.position.dx,
-                    top: flake.position.dy,
-                    child: rainDrop))
+                        left: flake.position.dx,
+                        top: flake.position.dy,
+                        child: rainDrop))
                     .toList(),
                 ...grounded
                     .map((flake) => Positioned(
-                    left: flake.position.dx,
-                    top: flake.position.dy,
-                    child: rainStrike))
+                        left: flake.position.dx,
+                        top: flake.position.dy,
+                        child: rainStrike))
                     .toList()
               ],
             ),

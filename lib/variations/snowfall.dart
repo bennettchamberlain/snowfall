@@ -73,7 +73,7 @@ class _SnowfallState extends State<Snowfall>
       setState(() {});
     });
 
-    WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       screenSize = MediaQuery.of(context).size;
       timer = Timer.periodic(const Duration(milliseconds: 100), (timer) {
         for (int number = 0; number < _random.nextInt(20); number++) {
